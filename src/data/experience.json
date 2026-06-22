@@ -1,0 +1,88 @@
+[
+  {
+    "title": "Software Development Engineer",
+    "company": "The Software Practice",
+    "period": "Nov 2022 — Present",
+    "projects": [
+      {
+        "name": "Enterprise Transportation Operations System",
+        "context": "Government Transportation — Singapore",
+        "points": [
+          "Developed and maintained an enterprise-grade operations system for a national transportation organization",
+          "Implemented shift scheduling & exchange, leave management, digital shift handover with signature, and operational balance tracking across multiple locations",
+          "Built frontend using Vue.js, developed backend services using .NET"
+        ],
+        "tech": ["Vue.js", ".NET"]
+      },
+      {
+        "name": "National Health Product Registration Platform",
+        "context": "Public Health Regulatory — Singapore",
+        "points": [
+          "Worked as Frontend Engineer on a large-scale regulatory web platform",
+          "Implemented UI strictly aligned with Figma design system",
+          "Resolved SonarQube issues and maintained ≥80% unit test coverage",
+          "Developed regression test suites using Playwright based on business scenarios",
+          "Implemented secure file upload architecture using AWS S3 and Lambda"
+        ],
+        "tech": ["Razor Pages", "Svelte", "Playwright", "AWS S3", "AWS Lambda"]
+      },
+      {
+        "name": "Government Land Administration System",
+        "context": "Public Sector Land Management — Singapore",
+        "points": [
+          "Developed frontend modules using Razor Pages + Alpine.js",
+          "Addressed SonarQube issues across frontend and backend codebases",
+          "Built and maintained unit tests with ≥80% coverage",
+          "Supported a multi-portal system serving government officers, public agencies, corporate and individual users"
+        ],
+        "tech": ["Razor Pages", "Alpine.js", ".NET", "AWS S3"]
+      },
+      {
+        "name": "Lifts and Escalators Registration System",
+        "context": "Building and Construction Authority — Singapore",
+        "points": [
+          "Worked as Frontend Engineer on a large-scale regulatory web platform",
+          "Implemented UI strictly aligned with Figma design system",
+          "Resolved SonarQube issues and maintained ≥80% unit test coverage",
+          "Developed regression test suites using Playwright based on business scenarios"
+        ],
+        "tech": ["Razor Pages", "Svelte", "Playwright"]
+      }
+    ]
+  },
+  {
+    "title": "Backend Developer",
+    "company": "Hijrah Coach",
+    "period": "Jun 2022 — Aug 2023",
+    "projects": [
+      {
+        "name": "Business Coaching Platform",
+        "context": null,
+        "points": [
+          "Built a platform connecting business coaches and entrepreneurs",
+          "Developed AI-powered business consultation features using internal datasets",
+          "Implemented real-time video and voice communication using Socket.IO",
+          "Used Google Cloud Platform for file storage (images, PDFs)"
+        ],
+        "tech": ["NestJS", "Socket.IO", "Google Cloud Platform", "AI Tools"]
+      }
+    ]
+  },
+  {
+    "title": "Backend Developer",
+    "company": "PT Icon Plus Indonesia",
+    "period": "Sep 2021 — May 2022",
+    "projects": [
+      {
+        "name": "Yanbung — PLN Officer Application",
+        "context": null,
+        "points": [
+          "Developed backend services for a nationwide PLN officer application",
+          "Handled workflows for new electricity meter requests, upgrades, and temporary meter release for public events",
+          "Implemented Kafka for asynchronous processing and messaging"
+        ],
+        "tech": ["Java Spring Boot", "Kafka"]
+      }
+    ]
+  }
+]

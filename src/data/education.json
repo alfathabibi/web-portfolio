@@ -1,0 +1,16 @@
+[
+  {
+    "degree": "Bachelor's Degree",
+    "school": "Telkom University",
+    "gpa": "3.80",
+    "maxGpa": "4.00",
+    "year": "2023"
+  },
+  {
+    "degree": "Diploma",
+    "school": "Telkom University",
+    "gpa": "3.93",
+    "maxGpa": "4.00",
+    "year": "2021"
+  }
+]

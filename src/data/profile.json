@@ -1,0 +1,47 @@
+{
+  "name": "Muhammad Alfath Abibi",
+  "title": "Software Engineer",
+  "location": "Bandung, Indonesia",
+  "email": "alfath.abibi@gmail.com",
+  "phone": "(+62) 82343666626",
+  "linkedin": "https://www.linkedin.com/in/muhammad-alfath-a-b691901b7/",
+  "roles": [
+    "Full Stack Engineer",
+    "Backend Developer",
+    "Frontend Engineer",
+    "Cloud Enthusiast"
+  ],
+  "summary": "Full Stack Engineer crafting enterprise & government systems across Indonesia and Singapore. Building reliable, scalable software with modern tech stacks.",
+  "stats": [
+    { "number": "3+", "label": "Years Experience" },
+    { "number": "5+", "label": "Major Projects" },
+    { "number": "2", "label": "Countries Served" }
+  ],
+  "about": [
+    "I'm a Full Stack Engineer based in <strong>Bandung, Indonesia</strong>, with hands-on experience delivering enterprise and government systems across Indonesia and Singapore.",
+    "My journey spans from building <strong>national-scale platforms</strong> for transportation operations and health product regulation, to creating <strong>startup applications</strong> like ride-hailing and coaching platforms.",
+    "I'm passionate about writing clean, testable code and building systems that are both reliable and maintainable. Whether it's architecting backend services with .NET or Java Spring, crafting responsive UIs with Vue.js, or setting up cloud infrastructure on AWS — I bring a holistic approach to software delivery."
+  ],
+  "highlights": [
+    {
+      "title": "Full Stack Development",
+      "description": "End-to-end systems from database to UI",
+      "icon": "monitor"
+    },
+    {
+      "title": "Quality Engineering",
+      "description": "80%+ test coverage, SonarQube, Playwright",
+      "icon": "check"
+    },
+    {
+      "title": "Enterprise Systems",
+      "description": "Government & large-scale regulated platforms",
+      "icon": "users"
+    },
+    {
+      "title": "Cloud & Infrastructure",
+      "description": "AWS (S3, Lambda), Google Cloud Platform",
+      "icon": "cloud"
+    }
+  ]
+}

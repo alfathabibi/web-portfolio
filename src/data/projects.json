@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Labaco — Ride-Hailing Platform",
+    "badge": "Published App",
+    "description": "A ride-hailing platform built for underserved regional areas, published on both Google Play Store and App Store.",
+    "features": [
+      "Built backend and web frontend using CodeIgniter",
+      "Developed cross-platform mobile apps using Flutter",
+      "Integrated Google Maps, Firebase chat & push notifications, Xendit payment gateway",
+      "Optimized map costs by using Mapbox for routing and rendering on Google Maps"
+    ],
+    "tech": ["CodeIgniter", "Flutter", "Firebase", "Google Maps", "Mapbox", "Xendit"],
+    "links": {}
+  },
+  {
+    "name": "Smart Hydroponic IoT System",
+    "badge": "Top 10 Nationally",
+    "description": "An IoT-based hydroponic automation system to control water pH and temperature, recognized as Top 10 Winner in Telkom Indonesia Innovillage competition.",
+    "features": [
+      "Real-time monitoring and control through an Android application",
+      "Firebase Realtime Database for live data synchronization",
+      "Arduino as sensor controller and actuator trigger for pumps and nutrient control"
+    ],
+    "tech": ["Arduino", "Android", "Firebase Realtime DB", "IoT Sensors"],
+    "links": {}
+  }
+]

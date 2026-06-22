@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Backend",
+    "icon": "server",
+    "skills": [
+      { "name": ".NET", "level": 90 },
+      { "name": "Java Spring Boot", "level": 82 },
+      { "name": "NestJS", "level": 80 },
+      { "name": "Kafka", "level": 70 }
+    ]
+  },
+  {
+    "name": "Frontend",
+    "icon": "code",
+    "skills": [
+      { "name": "Vue.js", "level": 90 },
+      { "name": "React.js", "level": 70 },
+      { "name": "Svelte", "level": 75 },
+      { "name": "Razor Pages", "level": 85 },
+      { "name": "Alpine.js", "level": 78 }
+    ]
+  },
+  {
+    "name": "Mobile & Cloud",
+    "icon": "mobile",
+    "skills": [
+      { "name": "Flutter", "level": 75 },
+      { "name": "AWS (S3, Lambda)", "level": 80 },
+      { "name": "Google Cloud Platform", "level": 75 },
+      { "name": "Firebase", "level": 82 }
+    ]
+  },
+  {
+    "name": "Testing & Others",
+    "icon": "tool",
+    "skills": [
+      { "name": "Unit Testing", "level": 85 },
+      { "name": "Playwright", "level": 80 },
+      { "name": "SonarQube", "level": 78 },
+      { "name": "Socket.IO", "level": 75 },
+      { "name": "IoT Systems", "level": 68 }
+    ]
+  }
+]
