@@ -2,9 +2,8 @@
   <nav :class="['navbar', { scrolled: isScrolled }]">
     <div class="nav-container">
       <a href="#" class="nav-logo" @click.prevent="$emit('navigate', 'hero')">
-        <span class="logo-bracket">&lt;</span>
+        <span class="logo-mark">A</span>
         <span class="logo-text">Alfath</span>
-        <span class="logo-bracket">/&gt;</span>
       </a>
 
       <button class="nav-toggle" @click="isOpen = true" :class="{ active: isOpen }">
@@ -166,20 +165,33 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 }
 
 .nav-logo {
-  font-family: var(--font-mono);
-  font-size: var(--text-lg);
-  font-weight: 600;
   display: flex;
-  gap: 2px;
+  align-items: center;
+  gap: 10px;
   transition: var(--transition);
 }
 
-.logo-bracket {
-  color: var(--accent);
+.logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  color: #0c0c0d;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  flex-shrink: 0;
 }
 
 .logo-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 600;
   color: var(--text-primary);
+  transition: color var(--transition);
 }
 
 .nav-logo:hover .logo-text {
