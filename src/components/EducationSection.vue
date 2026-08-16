@@ -4,114 +4,115 @@
       <span class="section-label">Education</span>
       <h2 class="section-title">Academic <span>Background</span></h2>
 
-      <div class="education-grid">
-        <div
+      <motion.div
+        class="education-list"
+        initial="hidden"
+        while-in-view="visible"
+        :viewport="{ once: true, margin: '-50px' }"
+        :variants="containerVariants"
+      >
+        <motion.div
           v-for="(edu, index) in education"
           :key="index"
-          class="edu-card reveal"
-          :style="{ transitionDelay: index * 0.15 + 's' }"
+          class="edu-row"
+          :variants="itemVariants"
         >
-          <div class="edu-icon">
-            <AppIcon name="graduation" :size="28" />
+          <div class="edu-gpa-block">
+            <span class="edu-gpa-number">{{ edu.gpa }}</span>
+            <span class="edu-gpa-max">/ {{ edu.maxGpa }} GPA</span>
           </div>
           <div class="edu-content">
             <h3>{{ edu.degree }}</h3>
             <p class="edu-school">{{ edu.school }}</p>
-            <div class="edu-meta">
-              <span class="edu-gpa">
-                <strong>GPA: {{ edu.gpa }}</strong> / {{ edu.maxGpa }}
-              </span>
-              <span class="edu-year">{{ edu.year }}</span>
-            </div>
           </div>
-        </div>
-      </div>
+          <span class="edu-year">{{ edu.year }}</span>
+        </motion.div>
+      </motion.div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { motion } from 'motion-v'
 import education from '../data/education.json'
-import AppIcon from './AppIcon.vue'
-import { useScrollReveal } from '../composables/useScrollReveal.js'
 
-useScrollReveal()
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+}
 </script>
 
 <style scoped>
-.education-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.edu-card {
+.education-list {
   display: flex;
-  gap: 20px;
-  padding: 32px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  transition: all var(--transition);
+  flex-direction: column;
+  border-top: 1px solid var(--border);
 }
 
-.edu-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.edu-icon {
-  width: 56px;
-  height: 56px;
+.edu-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--accent-glow);
-  border-radius: 14px;
-  color: var(--accent-light);
+  gap: var(--space-8);
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.edu-gpa-block {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
   flex-shrink: 0;
+  min-width: 140px;
+}
+
+.edu-gpa-number {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.edu-gpa-max {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.edu-content {
+  flex: 1;
 }
 
 .edu-content h3 {
-  font-size: 1.15rem;
+  font-size: var(--text-lg);
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .edu-school {
-  color: var(--accent-light);
-  font-weight: 500;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-}
-
-.edu-meta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.edu-gpa {
-  font-size: 0.9rem;
   color: var(--text-secondary);
-}
-
-.edu-gpa strong {
-  color: var(--text-primary);
+  font-weight: 500;
+  font-size: var(--text-sm);
 }
 
 .edu-year {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--text-muted);
-  padding: 2px 10px;
-  background: var(--bg-secondary);
-  border-radius: 4px;
+  flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-  .education-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 600px) {
+  .edu-row {
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .edu-year {
+    order: 3;
   }
 }
 </style>

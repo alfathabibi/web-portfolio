@@ -5,11 +5,14 @@
       <h2 class="section-title">Skills & <span>Technologies</span></h2>
 
       <div class="skills-grid">
-        <div
+        <motion.div
           v-for="(category, index) in categories"
           :key="index"
-          class="skill-category reveal"
-          :style="{ transitionDelay: index * 0.1 + 's' }"
+          :class="['skill-category', 'tile-' + index]"
+          :initial="{ opacity: 0, y: 24 }"
+          :while-in-view="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-50px' }"
+          :transition="{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }"
         >
           <div class="category-header">
             <span class="category-icon">
@@ -26,51 +29,53 @@
             >
               <span class="skill-name">{{ skill.name }}</span>
               <div class="skill-bar">
-                <div
+                <motion.div
                   class="skill-fill"
-                  :style="{ width: skill.level + '%' }"
-                ></div>
+                  :initial="{ width: '0%' }"
+                  :while-in-view="{ width: skill.level + '%' }"
+                  :viewport="{ once: true, margin: '-50px' }"
+                  :transition="{ duration: 0.9, ease: 'easeOut' }"
+                />
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { motion } from 'motion-v'
 import categories from '../data/skills.json'
 import AppIcon from './AppIcon.vue'
-import { useScrollReveal } from '../composables/useScrollReveal.js'
-
-useScrollReveal()
 </script>
 
 <style scoped>
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-5);
 }
+
+.tile-0 { grid-column: span 7; }
+.tile-1 { grid-column: span 5; }
+.tile-2 { grid-column: span 5; }
+.tile-3 { grid-column: span 7; }
 
 .skill-category {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px;
-  transition: all var(--transition);
-}
-
-.skill-category:hover {
-  border-color: var(--border-light);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
 }
 
 .category-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-6);
 }
 
 .category-icon {
@@ -79,20 +84,20 @@ useScrollReveal()
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-glow);
-  border-radius: 10px;
-  color: var(--accent-light);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
 }
 
 .category-header h3 {
-  font-size: 1.05rem;
+  font-size: var(--text-lg);
   font-weight: 700;
 }
 
 .skill-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .skill-item {
@@ -102,7 +107,7 @@ useScrollReveal()
 }
 
 .skill-name {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text-secondary);
 }
@@ -116,14 +121,16 @@ useScrollReveal()
 
 .skill-fill {
   height: 100%;
-  background: var(--gradient);
+  background: var(--accent);
   border-radius: 3px;
-  transition: width 1s ease;
 }
 
 @media (max-width: 768px) {
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+  .tile-0, .tile-1, .tile-2, .tile-3 {
+    grid-column: span 1;
   }
 }
 </style>

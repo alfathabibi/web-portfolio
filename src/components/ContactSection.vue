@@ -5,67 +5,68 @@
         <span class="section-label">Contact</span>
         <h2 class="contact-title">Let's Work <span>Together</span></h2>
         <p class="contact-description">
-          I'm currently open to new opportunities. Whether you have a project in mind, 
+          I'm currently open to new opportunities. Whether you have a project in mind,
           a question, or just want to say hi — my inbox is always open.
         </p>
 
-        <div class="contact-links">
-          <a :href="'mailto:' + profile.email" class="contact-card reveal">
+        <motion.div
+          class="contact-panel"
+          :initial="{ opacity: 0, y: 24 }"
+          :while-in-view="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, margin: '-50px' }"
+          :transition="{ duration: 0.6, ease: 'easeOut' }"
+        >
+          <a :href="'mailto:' + profile.email" class="contact-row">
             <div class="contact-icon">
-              <AppIcon name="mail" :size="22" />
+              <AppIcon name="mail" :size="20" />
             </div>
-            <div>
-              <span class="contact-label">Email</span>
-              <span class="contact-value">{{ profile.email }}</span>
-            </div>
+            <span class="contact-label">Email</span>
+            <span class="contact-value">{{ profile.email }}</span>
           </a>
 
-          <a :href="'tel:' + profile.phone.replace(/[^+\d]/g, '')" class="contact-card reveal" style="transition-delay: 0.05s">
+          <a :href="'tel:' + profile.phone.replace(/[^+\d]/g, '')" class="contact-row">
             <div class="contact-icon">
-              <AppIcon name="phone" :size="22" />
+              <AppIcon name="phone" :size="20" />
             </div>
-            <div>
-              <span class="contact-label">Phone</span>
-              <span class="contact-value">{{ profile.phone }}</span>
-            </div>
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">{{ profile.phone }}</span>
           </a>
 
-          <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer" class="contact-card reveal" style="transition-delay: 0.1s">
+          <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer" class="contact-row">
             <div class="contact-icon">
-              <AppIcon name="linkedin" :size="22" />
+              <AppIcon name="linkedin" :size="20" />
             </div>
-            <div>
-              <span class="contact-label">LinkedIn</span>
-              <span class="contact-value">{{ profile.name }}</span>
-            </div>
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">{{ profile.name }}</span>
           </a>
 
-          <div class="contact-card location reveal" style="transition-delay: 0.15s">
+          <div class="contact-row no-link">
             <div class="contact-icon">
-              <AppIcon name="location" :size="22" />
+              <AppIcon name="location" :size="20" />
             </div>
-            <div>
-              <span class="contact-label">Location</span>
-              <span class="contact-value">{{ profile.location }}</span>
-            </div>
+            <span class="contact-label">Location</span>
+            <span class="contact-value">{{ profile.location }}</span>
           </div>
-        </div>
+        </motion.div>
 
-        <a :href="'mailto:' + profile.email" class="btn btn-primary contact-cta">
+        <motion.a
+          :href="'mailto:' + profile.email"
+          class="btn btn-primary contact-cta"
+          :while-hover="{ y: -3, boxShadow: '0 12px 40px var(--accent-glow)' }"
+          :while-press="{ scale: 0.96 }"
+        >
           <span>Send Me a Message</span>
           <AppIcon name="arrow-right" :size="18" />
-        </a>
+        </motion.a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { motion } from 'motion-v'
 import profile from '../data/profile.json'
 import AppIcon from './AppIcon.vue'
-import { useScrollReveal } from '../composables/useScrollReveal.js'
-
-useScrollReveal()
 </script>
 
 <style scoped>
@@ -75,80 +76,81 @@ useScrollReveal()
 
 .contact-wrapper {
   text-align: center;
-  max-width: 700px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
 .contact-title {
-  font-size: 2.5rem;
+  font-size: var(--text-3xl);
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
   letter-spacing: -0.02em;
 }
 
 .contact-title span {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent);
 }
 
 .contact-description {
-  font-size: 1.05rem;
+  font-size: var(--text-lg);
   color: var(--text-secondary);
-  margin-bottom: 48px;
+  margin-bottom: var(--space-10);
   line-height: 1.8;
 }
 
-.contact-links {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 40px;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 20px;
+.contact-panel {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: all var(--transition);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 0 var(--space-6);
+  margin-bottom: var(--space-10);
   text-align: left;
 }
 
-.contact-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--transition);
+}
+
+.contact-row:last-child {
+  border-bottom: none;
+}
+
+.contact-row:not(.no-link):hover .contact-value {
+  color: var(--accent);
 }
 
 .contact-icon {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-glow);
-  border-radius: 10px;
-  color: var(--accent-light);
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  color: var(--accent);
   flex-shrink: 0;
 }
 
 .contact-label {
-  display: block;
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 2px;
+  width: 90px;
+  flex-shrink: 0;
 }
 
 .contact-value {
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   font-weight: 500;
   color: var(--text-primary);
+  transition: color var(--transition);
 }
 
 .contact-cta {
@@ -156,27 +158,24 @@ useScrollReveal()
   align-items: center;
   gap: 10px;
   padding: 16px 36px;
-  font-size: 1rem;
+  font-size: var(--text-base);
   font-weight: 600;
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: var(--accent);
-  color: white;
-  transition: all var(--transition);
+  color: #0c0c0d;
   box-shadow: 0 4px 20px var(--accent-glow);
 }
 
-.contact-cta:hover {
-  background: var(--accent-secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
-}
-
-@media (max-width: 768px) {
-  .contact-links {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 600px) {
   .contact-title {
-    font-size: 1.8rem;
+    font-size: var(--text-2xl);
+  }
+  .contact-row {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .contact-label {
+    width: auto;
   }
 }
 </style>
