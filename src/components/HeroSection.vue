@@ -395,9 +395,6 @@ onUnmounted(() => clearInterval(roleTimer))
   .hero-grid {
     grid-template-columns: 1fr;
   }
-  .hero-panel {
-    order: -1;
-  }
 }
 
 @media (max-width: 768px) {

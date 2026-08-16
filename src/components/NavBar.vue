@@ -6,7 +6,7 @@
         <span class="logo-text">Alfath</span>
       </a>
 
-      <button class="nav-toggle" @click="isOpen = true" :class="{ active: isOpen }">
+      <button class="nav-toggle" @click="isOpen = !isOpen" :class="{ active: isOpen }" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
@@ -132,8 +132,18 @@ const handleScroll = () => {
   }
 }
 
-onMounted(() => window.addEventListener('scroll', handleScroll))
-onUnmounted(() => window.removeEventListener('scroll', handleScroll))
+const handleKeydown = (e) => {
+  if (e.key === 'Escape') isOpen.value = false
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('keydown', handleKeydown)
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
 <style scoped>
@@ -245,6 +255,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 }
 
 .nav-toggle {
+  position: relative;
+  z-index: 1003;
   display: none;
   flex-direction: column;
   gap: 5px;
@@ -260,6 +272,18 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   background: var(--text-primary);
   border-radius: 2px;
   transition: var(--transition);
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .theme-toggle {
